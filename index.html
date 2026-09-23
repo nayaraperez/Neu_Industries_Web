@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="dark" data-sensory="estandar">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NeuroMundo — Ecosistema Digital e Inmersivo para Neurodivergencias</title>
+    <meta name="author" content="Neu Industries">
+    <meta name="description"
+        content="NeuroMundo es un ecosistema digital e inmersivo orientado a acompañar a familias de personas neurodivergentes mediante contención comunitaria, tecnología predictiva y simulación VR/IoT.">
+
+    <!-- Bootstrap 5.3.3 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <!-- Google Fonts: Inter & Outfit -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="static/css/style.css">
+</head>
+
+<body id="top">
+
+    <!-- ================================================================= -->
+    <!-- 1. HEADER / BARRA DE NAVEGACIÓN Y ACCESIBILIDAD                   -->
+    <!-- ================================================================= -->
+    <header class="sticky-top header-navbar">
+        <!-- Barra Superior de Accesibilidad y Modo Sensorial -->
+        <div class="top-sensory-bar py-1.5 small d-none d-md-block">
+            <div class="container d-flex justify-content-between align-items-center">
+                <div class="d-flex align-items-center gap-2">
+                    <i class="bi bi-shield-check text-accent"></i>
+                    <span id="topbar-secure-txt">Espacio Seguro • Protocolo Pseudónimo y Accesibilidad Neuroinclusiva</span>
+                </div>
+                <div class="d-flex align-items-center gap-3">
+                    <span id="topbar-sensory-lbl" class="fw-semibold">Modo Sensorial:</span>
+                    <div class="btn-group btn-group-sm" role="group" aria-label="Selector de Modo Sensorial">
+                        <button type="button" class="btn btn-sensory active" onclick="cambiarModoSensorial('estandar')" id="btn-sensory-std">Estándar</button>
+                        <button type="button" class="btn btn-sensory" onclick="cambiarModoSensorial('high-contrast')" id="btn-sensory-hc">Contraste</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <nav class="navbar navbar-expand-lg py-3" aria-label="Navegación principal">
+            <div class="container">
+                <a class="navbar-brand d-flex align-items-center gap-2 text-decoration-none" href="#top">
+                    <div class="logo-icon-box">
+                        <i class="bi bi-infinity fs-4"></i>
+                    </div>
+                    <div>
+                        <span id="nav-logo-title" class="navbar-brand-title d-block">NeuroMundo</span>
+                        <span id="nav-logo-sub" class="navbar-brand-subtitle">Plataforma Comunitaria</span>
+                    </div>
+                </a>
+
+                <button class="navbar-toggler border-0 shadow-none text-white" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarNeuroMundo" aria-controls="navbarNeuroMundo" aria-expanded="false"
+                    aria-label="Abrir navegación">
+                    <i class="bi bi-list fs-2 text-primary-custom"></i>
+                </button>
+
+                <div class="collapse navbar-collapse" data-bs-theme="dark" id="navbarNeuroMundo">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center gap-2">
+                        <li class="nav-item">
+                            <a class="nav-link nav-link-custom" href="#ficha-proyecto">
+                                <i class="bi bi-card-heading me-1 text-accent"></i>
+                                <span id="nav-link-ficha">Ficha e Indicadores</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link nav-link-custom" href="#ods">
+                                <i class="bi bi-globe-americas me-1 text-accent"></i>
+                                <span id="nav-link-ods">ODS & Problemática</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link nav-link-custom" href="#tecnologias">
+                                <i class="bi bi-code-slash me-1 text-accent"></i>
+                                <span id="nav-link-tech">Tecnologías</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link nav-link-custom" href="#faq">
+                                <i class="bi bi-question-circle me-1 text-accent"></i>
+                                <span id="nav-link-faq">Preguntas Frecuentes</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link nav-link-custom" href="#equipo">
+                                <i class="bi bi-people me-1 text-accent"></i>
+                                <span id="nav-link-team">Equipo</span>
+                            </a>
+                        </li>
+                        <li class="nav-item ms-lg-2">
+                            <button id="btn-idioma" class="btn btn-accent-outline btn-sm rounded-pill px-3 fw-bold d-flex align-items-center gap-1" onclick="alternarIdioma()">
+                                <i class="bi bi-translate"></i> <span id="lbl-idioma-btn">ESP</span>
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- CONTENEDOR PRINCIPAL -->
+    <main class="container my-4 my-lg-5">
+
+        <!-- ================================================================= -->
+        <!-- 2. BANNER HERO PRINCIPAL Y MANIFIESTO (BIENVENIDA)               -->
+        <!-- ================================================================= -->
+        <!-- BIENVENIDA / HERO -->
+        <section id="bienvenida" class="hero-banner-wrapper position-relative mb-5">
+            <div class="row align-items-center position-relative" style="z-index: 2;">
+                <div class="col-lg-8">
+                    <div class="mb-3">
+                        <span id="hero-badge" class="hero-badge-top">
+                            <i class="bi bi-sparkles"></i> BIENVENIDOS: UN ESPACIO DISEÑADO PARA TI
+                        </span>
+                    </div>
+
+                    <h1 id="hero-title" class="display-4 fw-extrabold text-primary-custom mb-3 lh-tight">
+                        Amar, Respetar e Incluir
+                    </h1>
+
+                    <div class="hero-manifesto-badge">
+                        <div class="d-flex align-items-center gap-2">
+                            <i class="bi bi-heart-pulse-fill text-accent fs-5"></i>
+                            <span id="hero-subtitle">AMAR, RESPETAR E INCLUIR • UN ENFOQUE HUMANO Y TECNOLÓGICO</span>
+                        </div>
+                    </div>
+
+                    <p id="hero-description" class="lead text-secondary-custom fs-6 mb-4" style="max-width: 720px;">
+                        NeuroMundo es un ecosistema digital e inmersivo orientado a acompañar a familias de personas
+                        neurodivergentes. Combina contención comunitaria, tecnología predictiva y experiencias de
+                        simulador para reducir el colapso, el estigma y la sobrecarga emocional.
+                    </p>
+
+                    <div class="d-flex flex-wrap gap-3">
+                        <a id="btn-hero-ficha" href="#ficha-titulo" class="btn btn-accent btn-lg rounded-pill px-4 fw-bold">
+                            <i class="bi bi-compass me-2"></i> Ver Ficha Técnica
+                        </a>
+                        <a id="btn-hero-impacto" href="#problema" class="btn btn-glass-outline btn-lg rounded-pill px-4 fw-bold">
+                            <i class="bi bi-activity me-2"></i> Métricas de Impacto
+                        </a>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 d-none d-lg-block">
+                    <div class="glass-card p-4 rounded-4 shadow-lg position-relative overflow-hidden">
+                        <div class="d-flex align-items-center gap-3 mb-3 border-bottom-glass pb-3">
+                            <div class="icon-box-accent p-2.5 rounded-3">
+                                <i class="bi bi-headset-vr fs-3"></i>
+                            </div>
+                            <div>
+                                <div id="ecosystem-title" class="fw-bold fs-6 text-primary-custom">Ecosistema Conectado</div>
+                                <div id="ecosystem-subtitle" class="small text-secondary-custom">Web Pseudónima + VR/IoT</div>
+                            </div>
+                        </div>
+                        <div class="small text-secondary-custom mb-3 lh-lg">
+                            <div id="ecosystem-feat-1"><i class="bi bi-check-circle-fill text-accent me-1.5"></i> Reducción de crisis y colapsos</div>
+                            <div id="ecosystem-feat-2"><i class="bi bi-check-circle-fill text-accent me-1.5"></i> Soporte a cuidadores 24/7</div>
+                            <div id="ecosystem-feat-3"><i class="bi bi-check-circle-fill text-accent me-1.5"></i> Traductor empático con IA</div>
+                        </div>
+                        <div class="text-center pt-2">
+                            <span id="ecosystem-author" class="badge-tag-futuristic">Desarrollado por Neu Industries</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================================================================= -->
+        <!-- 3. INFORMACIÓN DE LA APP Y FICHA DEL PROYECTO                    -->
+        <!-- ================================================================= -->
+        <section id="ficha-proyecto" class="module-card mb-5">
+            <div class="d-flex flex-wrap justify-content-between align-items-center mb-4 pb-3 border-bottom-glass">
+                <div>
+                    <span id="ficha-badge" class="section-badge">INFORMACIÓN DE LA APP Y FICHA DEL PROYECTO</span>
+                    <h2 id="ficha-titulo" class="h3 mb-0 text-primary-custom">Ficha Técnica e Indicadores Clave</h2>
+                </div>
+                <div class="text-secondary-custom small mt-2 mt-md-0">
+                    <i class="bi bi-activity text-accent me-1"></i> Métricas validadas con impacto medible
+                </div>
+            </div>
+
+            <!-- GRID DE INDICADORES CLAVE -->
+            <div id="indicadores" class="row g-3 g-md-4 mb-4">
+                <div class="col-6 col-lg-3">
+                    <div class="stat-card-futuristic">
+                        <div class="stat-icon-box">
+                            <i class="bi bi-graph-down-arrow"></i>
+                        </div>
+                        <div id="stat1-val" class="display-6 fw-extrabold text-primary-custom mb-1">40%</div>
+                        <div id="stat1-lbl" class="small fw-semibold text-secondary-custom">Reducción del Estrés Familiar</div>
+                    </div>
+                </div>
+                <div class="col-6 col-lg-3">
+                    <div class="stat-card-futuristic">
+                        <div class="stat-icon-box">
+                            <i class="bi bi-search-heart"></i>
+                        </div>
+                        <div id="stat2-val" class="display-6 fw-extrabold text-primary-custom mb-1">25%</div>
+                        <div id="stat2-lbl" class="small fw-semibold text-secondary-custom">Subdiagnóstico Identificado</div>
+                    </div>
+                </div>
+                <div class="col-6 col-lg-3">
+                    <div class="stat-card-futuristic">
+                        <div class="stat-icon-box">
+                            <i class="bi bi-shield-exclamation"></i>
+                        </div>
+                        <div id="stat3-val" class="display-6 fw-extrabold text-primary-custom mb-1">80.2%</div>
+                        <div id="stat3-lbl" class="small fw-semibold text-secondary-custom">Atención a la Ansiedad del Cuidador</div>
+                    </div>
+                </div>
+                <div class="col-6 col-lg-3">
+                    <div class="stat-card-futuristic">
+                        <div class="stat-icon-box">
+                            <i class="bi bi-layers-half"></i>
+                        </div>
+                        <div id="metric-pages-val" class="display-6 fw-extrabold text-primary-custom mb-1">4 Páginas</div>
+                        <div id="stat4-lbl" class="small fw-semibold text-secondary-custom">Ecosistema Integrado Web/VR</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- DETALLES TÉCNICOS ESTRUCTURADOS -->
+            <div class="ficha-details-box p-3 p-md-4 rounded-4">
+                <div class="row g-4">
+                    <div class="col-md-6 col-lg-3">
+                        <div class="d-flex flex-column h-100">
+                            <span id="ficha-lbl-nombre" class="small text-secondary-custom text-uppercase fw-bold mb-1">Nombre del Proyecto</span>
+                            <span id="ficha-val-nombre" class="fw-bold text-primary-custom">NeuroMundo — Ecosistema Digital e Inmersivo para Neurodivergencias</span>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3">
+                        <div class="d-flex flex-column h-100">
+                            <span id="ficha-lbl-org" class="small text-secondary-custom text-uppercase fw-bold mb-1">Organización / Desarrollador</span>
+                            <span id="ficha-val-org" class="fw-bold text-accent">
+                                <i class="bi bi-building me-1"></i> Neu Industries
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3">
+                        <div class="d-flex flex-column h-100">
+                            <span id="ficha-lbl-metodo" class="small text-secondary-custom text-uppercase fw-bold mb-1">Enfoque Metodológico</span>
+                            <span id="ficha-val-metodo" class="fw-semibold text-secondary-custom">Apoyo Comunitario Pseudónimo, Corregulación Sensorial, Simulación VR/IoT</span>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3">
+                        <div class="d-flex flex-column h-100">
+                            <span id="ficha-lbl-poblacion" class="small text-secondary-custom text-uppercase fw-bold mb-1">Población Objetivo</span>
+                            <span id="ficha-val-poblacion" class="fw-semibold text-primary-custom">Familias, Cuidadores de Primer Diagnóstico, Docentes y Profesionales de Apoyo</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        
+<div class="main-container">
+
+    <!-- 1. Introducción -->
+    <section id="introduccion" class="card-section">
+        <span class="section-badge">
+            <span class="lang-es"><i class="bi bi-compass me-1"></i> VISIÓN GENERAL</span>
+            <span class="lang-en"><i class="bi bi-compass me-1"></i> OVERVIEW</span>
+        </span>
+        <h2 class="d-flex align-items-center gap-2">
+            <i class="bi bi-info-circle text-accent fs-4"></i>
+            <span class="lang-es">Introducción</span>
+            <span class="lang-en">Introduction</span>
+        </h2>
+        <p class="text-secondary-custom mt-3">
+            <span class="lang-es"><strong>NeuroMundo</strong> es una propuesta creada por la empresa <strong>Neu Industries</strong>. Consiste en una plataforma digital comunitaria y pseudónima dedicada exclusivamente a padres y cuidadores de personas en el Espectro Autista (TEA). Su objetivo principal es facilitar la consulta técnica de dudas conductuales, el intercambio de estrategias de manejo y el soporte mutuo, protegiendo siempre la privacidad e identidad de los menores.</span>
+            <span class="lang-en"><strong>NeuroMundo</strong> is a project created by <strong>Neu Industries</strong>. It consists of a pseudonymous digital community platform dedicated exclusively to parents and caregivers of individuals on the Autism Spectrum (ASD). Its main goal is to facilitate inquiries on behavioral management, strategy sharing, and mutual support, while strictly protecting the privacy and identity of minors.</span>
+        </p>
+    </section>
+
+    <!-- 2. Problemática -->
+    <section id="problema" class="card-section highlight-card">
+        <span class="section-badge">
+            <span class="lang-es"><i class="bi bi-shield-exclamation me-1"></i> CONTEXTO ACTUAL</span>
+            <span class="lang-en"><i class="bi bi-shield-exclamation me-1"></i> CURRENT CONTEXT</span>
+        </span>
+        <h2 class="d-flex align-items-center gap-2">
+            <i class="bi bi-exclamation-triangle text-accent fs-4"></i>
+            <span class="lang-es">La Problemática: El Desafío del Autismo</span>
+            <span class="lang-en">The Problem: The Autism Challenge</span>
+        </h2>
+        <p class="text-secondary-custom mt-2">
+            <span class="lang-es">Las familias enfrentan dos grandes barreras: el subdiagnóstico y la falta de herramientas para el manejo diario.</span>
+            <span class="lang-en">Families face two major barriers: underdiagnosis and a lack of tools for daily management.</span>
+        </p>
+        <ul class="content-list list-unstyled mt-3">
+            <li class="d-flex align-items-start gap-2 mb-2">
+                <i class="bi bi-dot text-accent fs-3 lh-1"></i>
+                <span>
+                    <span class="lang-es"><strong class="text-primary-custom">Casos no diagnosticados:</strong> 1 de cada 4 niños menores de 8 años (25%) no tiene un diagnóstico oficial, al igual que el 25% de los adolescentes. Existe además una brecha socioeconómica crítica en comunidades de bajos ingresos.</span>
+                    <span class="lang-en"><strong class="text-primary-custom">Undiagnosed cases:</strong> 1 in 4 children under 8 (25%) lacks an official diagnosis, as do 25% of adolescents. There is also a critical socioeconomic gap in low-income communities.</span>
+                </span>
+            </li>
+            <li class="d-flex align-items-start gap-2 mb-2">
+                <i class="bi bi-dot text-accent fs-3 lh-1"></i>
+                <span>
+                    <span class="lang-es"><strong class="text-primary-custom">Impacto en la Salud Mental:</strong> El 72.5% de las madres de niños autistas presentan síntomas depresivos y el 80.2% sufre de ansiedad por falta de herramientas para manejar crisis sensoriales o conductuales.</span>
+                    <span class="lang-en"><strong class="text-primary-custom">Mental Health Impact:</strong> 72.5% of mothers of autistic children display depressive symptoms and 80.2% suffer from anxiety due to a lack of tools to manage sensory or behavioral crisis.</span>
+                </span>
+            </li>
+            <li class="d-flex align-items-start gap-2">
+                <i class="bi bi-dot text-accent fs-3 lh-1"></i>
+                <span>
+                    <span class="lang-es"><strong class="text-primary-custom">Impacto Económico:</strong> Entre el 25% y el 45% de los padres han tenido que reducir sus horas laborales o renunciar para dedicarse al cuidado de sus hijos.</span>
+                    <span class="lang-en"><strong class="text-primary-custom">Financial Impact:</strong> Between 25% and 45% of parents have had to reduce their work hours or quit entirely to dedicate themselves to caregiving.</span>
+                </span>
+            </li>
+        </ul>
+    </section>
+
+    <!-- 3. Alineación con ODS -->
+    <section id="ods" class="card-section">
+        <span class="section-badge">
+            <span class="lang-es"><i class="bi bi-globe me-1"></i> COMPROMISO GLOBAL</span>
+            <span class="lang-en"><i class="bi bi-globe me-1"></i> GLOBAL COMMITMENT</span>
+        </span>
+        <h2 class="d-flex align-items-center gap-2">
+            <i class="bi bi-pie-chart text-accent fs-4"></i>
+            <span class="lang-es">Alineación con los ODS</span>
+            <span class="lang-en">Alignment with SDGs</span>
+        </h2>
+        <div class="ods-grid">
+            <div class="ods-card">
+                <div class="ods-badge ods-3-badge"><i class="bi bi-heart-pulse-fill me-1"></i> ODS 3</div>
+                <h3 class="fs-5">
+                    <span class="lang-es">Salud y Bienestar</span>
+                    <span class="lang-en">Good Health and Well-being</span>
+                </h3>
+                <p>
+                    <span class="lang-es">Ataca la crisis de salud mental en cuidadores, reduciendo el estrés familiar hasta en un 40% mediante herramientas de regulación.</span>
+                    <span class="lang-en">Addresses caregiver mental health crisis, reducing family stress by up to 40% through regulation tools.</span>
+                </p>
+            </div>
+            <div class="ods-card">
+                <div class="ods-badge ods-10-badge"><i class="bi bi-people-fill me-1"></i> ODS 10</div>
+                <h3 class="fs-5">
+                    <span class="lang-es">Reducción de Desigualdades</span>
+                    <span class="lang-en">Reduced Inequalities</span>
+                </h3>
+                <p>
+                    <span class="lang-es">Democratiza el acceso a recursos adaptativos gratuitos para familias sin acceso a especialistas.</span>
+                    <span class="lang-en">Democratizes access to free adaptive resources for families without access to specialists.</span>
+                </p>
+            </div>
+        </div>
+    </section>
+
+<!-- 4. Solución Tecnológica -->
+<section id="solucion" class="card-section">
+    <span class="section-badge">
+        <span class="lang-es"><i class="bi bi-cpu me-1"></i> ARQUITECTURA DE SOFTWARE</span>
+        <span class="lang-en"><i class="bi bi-cpu me-1"></i> SOFTWARE ARCHITECTURE</span>
+    </span>
+    <h2 class="d-flex align-items-center gap-2 mb-3">
+        <i class="bi bi-layers text-accent fs-4"></i>
+        <span class="lang-es">Solución Tecnológica: NeuroMundo</span>
+        <span class="lang-en">Technological Solution: NeuroMundo</span>
+    </h2>
+    <div class="tech-grid">
+        <div class="tech-card">
+            <div class="tech-icon text-accent"><i class="bi bi-robot"></i></div>
+            <h3 class="fs-6 fw-bold">
+                <span class="lang-es">Copiloto IA</span>
+                <span class="lang-en">AI Copilot</span>
+            </h3>
+            <p class="small mb-0 text-secondary-custom">
+                <span class="lang-es">Asistente de orientación adaptativa, contextualizada y segura para situaciones críticas.</span>
+                <span class="lang-en">Adaptive, contextualized, and safe guidance assistant for critical situations.</span>
+            </p>
+        </div>
+
+        <div class="tech-card">
+            <div class="tech-icon text-accent"><i class="bi bi-grid-3x3-gap"></i></div>
+            <h3 class="fs-6 fw-bold">
+                <span class="lang-es">Tablero AAC</span>
+                <span class="lang-en">AAC Board</span>
+            </h3>
+            <p class="small mb-0 text-secondary-custom">
+                <span class="lang-es">Sistema de pictogramas interactivos diseñado para facilitar la expresión no verbal.</span>
+                <span class="lang-en">Interactive pictogram system designed to facilitate non-verbal expression.</span>
+            </p>
+        </div>
+
+        <!-- Modo Claro Sensorial (Actualizado) -->
+        <div class="tech-card">
+            <div class="tech-icon text-accent"><i class="bi bi-sun-fill"></i></div>
+            <h3 class="fs-6 fw-bold">
+                <span class="lang-es">Modo Claro Sensorial</span>
+                <span class="lang-en">Sensory Light Mode</span>
+            </h3>
+            <p class="small mb-0 text-secondary-custom">
+                <span class="lang-es">Paleta clara y suave optimizada para evitar el deslumbramiento y sobreestimulación, sustituyendo al antiguo modo contraste.</span>
+                <span class="lang-en">Soft, glare-free light palette optimized to avoid sensory overload, replacing the old contrast mode.</span>
+            </p>
+        </div>
+
+        <div class="tech-card">
+            <div class="tech-icon text-accent"><i class="bi bi-calendar-check"></i></div>
+            <h3 class="fs-6 fw-bold">
+                <span class="lang-es">Agenda Visual</span>
+                <span class="lang-en">Visual Schedule</span>
+            </h3>
+            <p class="small mb-0 text-secondary-custom">
+                <span class="lang-es">Secuenciador de rutinas e indicador emocional tipo semáforo para prevención de crisis.</span>
+                <span class="lang-en">Routine sequencer and traffic-light emotional indicator for crisis prevention.</span>
+            </p>
+        </div>
+    </div>
+</section>
+<!-- TECNOLOGÍAS UTILIZADAS -->
+<section id="tecnologias" class="card-section mb-5">
+    <span class="section-badge">
+        <i class="bi bi-code-slash me-1"></i> STACK TECNOLÓGICO
+    </span>
+    <h2 class="d-flex align-items-center gap-2 mb-3">
+        <i class="bi bi-terminal text-accent fs-4"></i>
+        <span id="tech-title">Tecnologías Utilizadas</span>
+    </h2>
+    <div class="tech-grid">
+        <div class="tech-card">
+            <div class="tech-icon text-accent"><i class="bi bi-filetype-html"></i></div>
+            <h3 class="fs-6 fw-bold">JS / HTML5 / CSS3</h3>
+            <p id="tech-frontend-desc" class="small mb-0">Interfaz responsiva, accesible, semántica y dinámicamente adaptada.</p>
+        </div>
+        <div class="tech-card">
+            <div class="tech-icon text-accent"><i class="bi bi-cpu"></i></div>
+            <h3 id="tech-ai-title" class="fs-6 fw-bold">Inteligencia Artificial</h3>
+            <p id="tech-ai-desc" class="small mb-0">Modelos entrenados para sugerir respuestas empáticas y validadas por profesionales.</p>
+        </div>
+    </div>
+</section>
+
+    <!-- 6. Preguntas Frecuentes (FAQ) -->
+    <section id="faq" class="card-section">
+        <span class="section-badge">
+            <span class="lang-es"><i class="bi bi-question-circle me-1"></i> SOPORTE & DUDAS</span>
+            <span class="lang-en"><i class="bi bi-question-circle me-1"></i> SUPPORT & FAQ</span>
+        </span>
+        <h2 class="d-flex align-items-center gap-2 mb-3">
+            <i class="bi bi-chat-left-dots text-accent fs-4"></i>
+            <span class="lang-es">Preguntas Frecuentes</span>
+            <span class="lang-en">Frequently Asked Questions</span>
+        </h2>
+        <div class="faq-item">
+            <h3 class="d-flex align-items-center gap-2">
+                <i class="bi bi-shield-lock text-accent"></i>
+                <span class="lang-es">¿Cómo protegemos la privacidad de los niños?</span>
+                <span class="lang-en">How do we protect children's privacy?</span>
+            </h3>
+            <p class="mb-0">
+                <span class="lang-es">La plataforma opera de forma 100% pseudónima. No requerimos ni almacenamos nombres reales, fotografías ni datos sensibles de menores.</span>
+                <span class="lang-en">The platform is 100% pseudonymous. We do not store real names, photos, or sensitive data of minors.</span>
+            </p>
+        </div>
+        <div class="faq-item">
+            <h3 class="d-flex align-items-center gap-2">
+                <i class="bi bi-currency-dollar text-accent"></i>
+                <span class="lang-es">¿Tiene algún costo de suscripción?</span>
+                <span class="lang-en">Is there any subscription fee?</span>
+            </h3>
+            <p class="mb-0">
+                <span class="lang-es">No. NeuroMundo es una plataforma comunitaria totalmente gratuita y abierta a familias y cuidadores.</span>
+                <span class="lang-en">No. NeuroMundo is a completely free community platform open to families and caregivers.</span>
+            </p>
+        </div>
+    </section>
+
+    <!-- 7. Código QR -->
+    <section id="qr" class="card-section highlight-card">
+        <span class="section-badge">
+            <span class="lang-es"><i class="bi bi-qr-code-scan me-1"></i> ACCESO RÁPIDO</span>
+            <span class="lang-en"><i class="bi bi-qr-code-scan me-1"></i> QUICK ACCESS</span>
+        </span>
+        <h2 class="d-flex align-items-center gap-2 mb-3">
+            <i class="bi bi-qr-code text-accent fs-4"></i>
+            <span class="lang-es">Código QR del Proyecto</span>
+            <span class="lang-en">Project QR Code</span>
+        </h2>
+        <div class="qr-container my-3">
+            <img src="static/images/QR App NeuroMundo.png" alt="Código QR NeuroMundo" class="qr-img">
+            <p class="qr-url font-monospace text-accent mt-2 mb-0">https://tu-usuario.github.io/tu-repositorio</p>
+        </div>
+    </section>
+
+    <!-- 8. Galería -->
+    <section id="galeria" class="card-section">
+        <h2 class="d-flex align-items-center gap-2 mb-3">
+            <i class="bi bi-aspect-ratio text-accent fs-4"></i>
+            <span class="lang-es">Presentamos la Aplicación NeuroMundo</span>
+            <span class="lang-en">We present the NeuroMundo App</span>
+        </h2>
+        <div class="gallery-grid">
+            <div class="gallery-item text-center">
+                <img src="https://via.placeholder.com/400x300/1e293b/38bdf8?text=Tablero+AAC+y+Pictogramas" alt="Tablero AAC" class="img-fluid">
+                <p class="fw-semibold text-primary-custom mb-0 mt-2">Tablero AAC de Comunicación</p>
+            </div>
+            <div class="gallery-item text-center">
+                <img src="https://via.placeholder.com/400x300/1e293b/38bdf8?text=Copiloto+IA+Adaptativo" alt="Copiloto IA" class="img-fluid">
+                <p class="fw-semibold text-primary-custom mb-0 mt-2">Copiloto IA Adaptativo</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 9. Demostración -->
+    <section id="demostracion" class="card-section">
+        <span class="section-badge">
+            <span class="lang-es"><i class="bi bi-play-circle me-1"></i> MULTIMEDIA</span>
+            <span class="lang-en"><i class="bi bi-play-circle me-1"></i> MULTIMEDIA</span>
+        </span>
+        <h2 class="d-flex align-items-center gap-2 mb-3">
+            <i class="bi bi-camera-video text-accent fs-4"></i>
+            <span class="lang-es">Video Demostrativo</span>
+            <span class="lang-en">Demonstration Video</span>
+        </h2>
+        <div class="video-container shadow-sm">
+<video id="demo-video" src="static/videos/Loom _ Free Screen & Video Recording Software _ Loom - 14 August 2026 (1).mp4" muted loop playsinline></video>
+        </div>
+    </section>
+
+    <!-- 10. Equipo de Trabajo -->
+<!-- ========================================== -->
+<!-- SECCIÓN DE EQUIPO CON CONEXIÓN A JS       -->
+<!-- ========================================== -->
+<section id="equipo" class="card-section">
+    <span class="section-badge">
+        <span class="lang-es"><i class="bi bi-people me-1"></i> TALENTO HUMANO</span>
+        <span class="lang-en"><i class="bi bi-people me-1"></i> OUR TEAM</span>
+    </span>
+    <h2 class="d-flex align-items-center gap-2 mb-4">
+        <i class="bi bi-person-badge text-accent fs-4"></i>
+        <span class="lang-es">Equipo de Neu Industries</span>
+        <span class="lang-en">Neu Industries Team</span>
+    </h2>
+    <div class="team-grid">
+        <div class="team-card">
+            <div class="avatar text-accent"><i class="bi bi-person-gear"></i></div>
+            <h3 class="fs-6 fw-bold mb-1">Nayara Pérez</h3>
+            <span id="team-role-1" class="role">Líder de Proyecto</span>
+            <p id="team-desc-1" class="mb-0">Liderazgo general y vocera principal.</p>
+        </div>
+        <div class="team-card">
+            <div class="avatar text-accent"><i class="bi bi-code-square"></i></div>
+            <h3 class="fs-6 fw-bold mb-1">Mathías Abarca</h3>
+            <span id="team-role-2" class="role">Sub-Líder & Dev</span>
+            <p id="team-desc-2" class="mb-0">Co-coordinación y lógica JavaScript.</p>
+        </div>
+        <div class="team-card">
+            <div class="avatar text-accent"><i class="bi bi-layout-text-window-reverse"></i></div>
+            <h3 class="fs-6 fw-bold mb-1">Iris Ccallomamani</h3>
+            <span id="team-role-3" class="role">Dev & Contenidos</span>
+            <p id="team-desc-3" class="mb-0">Estructuración, maquetación y dinámica de web.</p>
+        </div>
+        <div class="team-card">
+            <div class="avatar text-accent"><i class="bi bi-palette"></i></div>
+            <h3 class="fs-6 fw-bold mb-1">Javiera León</h3>
+            <span id="team-role-4" class="role">UI/UX & Guiones</span>
+            <p id="team-desc-4" class="mb-0">Diseño visual y guion técnico.</p>
+        </div>
+        <div class="team-card">
+            <div class="avatar text-accent"><i class="bi bi-cpu-fill"></i></div>
+            <h3 class="fs-6 fw-bold mb-1">Yhojans Silva</h3>
+            <span id="team-role-5" class="role">Dev & Copiloto IA</span>
+            <p id="team-desc-5" class="mb-0">Integración de herramientas e IA.</p>
+        </div>
+    </div>
+</section>
+
+</div>
+    </main>
+
+    <!-- ================================================================= -->
+    <!-- 4. FOOTER                                                         -->
+    <!-- ================================================================= -->
+<footer class="footer-neu-modern">
+    <div class="container">
+        <div class="row align-items-center gy-4">
+            <div class="col-md-6 text-center text-md-start">
+                <div class="d-flex align-items-center justify-content-center justify-content-md-start gap-3">
+                    <div class="logo-icon-box p-2.5 rounded-3">
+                        <i class="bi bi-building fs-4 text-white"></i>
+                    </div>
+                    <div>
+                        <h5 id="footer-org" class="text-primary-custom fw-bold mb-0">Neu Industries</h5>
+                        <p id="footer-desc" class="small text-secondary-custom mb-0">Ficha del Proyecto e Información de la App • Ecosistema NeuroMundo</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 text-center text-md-end">
+                <span id="footer-accessibility-tag" class="badge-tag-futuristic">
+                    <i class="bi bi-universal-access me-1 text-accent"></i> Diseñado con principios de accesibilidad universal y empatía
+                </span>
+                <div id="footer-copyright" class="text-secondary-custom small mt-2">© 2026 Neu Industries. Todos los derechos reservados.</div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+    <!-- Bootstrap 5.3.3 JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+    <script src="static/js/script.js"></script>
+</body>
+</html>
